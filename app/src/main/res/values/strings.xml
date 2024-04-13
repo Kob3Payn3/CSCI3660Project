@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WhackAMole</string>
+    <string name="game_over">Game Over</string>
+</resources>
