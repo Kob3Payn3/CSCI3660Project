@@ -12,9 +12,8 @@ public class WhackAMoleGame {
     }
 
     public void whackingTheMole(){
-
-    playerScore = playerScore + 10;
-    scoreTextView.setText("Score: " + playerScore);
+        playerScore = playerScore + 10;
+        scoreTextView.setText("Score: " + playerScore);
     }
 
 }
