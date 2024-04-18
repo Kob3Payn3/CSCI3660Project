@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -89,5 +91,32 @@ public class MainActivity extends AppCompatActivity {
             moleHoleButton.setEnabled(true);
         }
     }
+
+    private void startButtons() {
+        // Randomize the buttons
+        ButtonRandomizer buttonRandomizer = new ButtonRandomizer();
+        List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(3);
+
+        // Enable only the selected buttons
+        enableSelectedButtons(enabledButtonIds);
+
+        // Start the timer
+        countDownTimer.start();
+    }
+
+    private void enableSelectedButtons(List<Integer> enabledButtonIds) {
+        // Disable all buttons first
+        disableMoleButtons();
+
+        // Enable only the selected buttons
+        for (int buttonId : enabledButtonIds) {
+            int buttonResourceId = getResources().getIdentifier("moleHole" + buttonId, "id", getPackageName());
+            Button moleHoleButton = findViewById(buttonResourceId);
+            moleHoleButton.setEnabled(true);
+        }
+    }
+
+
+
 
 }
