@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView timerTextView;
     private CountDownTimer countDownTimer;
     private final long timerLength = 30000;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        enableMoleButtons();
-
+        startButtons();
         countDownTimer.start();
     }
 
@@ -84,13 +85,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void enableMoleButtons() {
+    /*
+        private void enableMoleButtons() {
         for (int i = 1; i <= 9; i++) {
             int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonId);
             moleHoleButton.setEnabled(true);
         }
     }
+    */
 
     private void startButtons() {
         // Randomize the buttons
