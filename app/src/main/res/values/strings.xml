@@ -1,10 +1,42 @@
 <resources>
+    <!-- Gameplay -->
     <string name="app_name">WhackAMole</string>
     <string name="start_button">Start</string>
     <string name="help_button">Help</string>
+
+    <!-- Help screen -->
     <string name="instructions_header">Instructions</string>
     <string name="instructions_text">
         1: Hit the moles when they pop out of their holes
         \n2: Hit them all before the timer runs out
         \n3: Try to get the highest score!\n</string>
+
+    <!-- Scoreboard Arrays -->
+    <string-array name="player_names">
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+        <item>---</item>
+    </string-array>
+
+    <integer-array name="player_scores">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
