@@ -12,6 +12,8 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/list_score" />
+        app:layoutManager="LinearLayoutManager"/>
+
+        <!-- commented this out cause there was no list_score layout file -->
+        <!--tools:listitem="@layout/list_score" /> -->
 </FrameLayout>

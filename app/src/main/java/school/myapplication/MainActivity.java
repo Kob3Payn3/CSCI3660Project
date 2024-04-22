@@ -1,10 +1,12 @@
 package school.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private WhackAMoleGame game;
     private TextView timerTextView;
     private CountDownTimer countDownTimer;
-    private final long timerLength = 30000;
+    private final long timerLength = 10000;
 
 
     @Override
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreTextView = findViewById(R.id.scoreTextView);
         timerTextView = findViewById(R.id.timerTextView);
         game = new WhackAMoleGame(scoreTextView);
+
+        // Calling Scoreboard Fragment
+        ScoreboardFragment scoreboardFragment = new ScoreboardFragment();
+
 
         disableMoleButtons();
 
@@ -61,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish(){
 
+                disableMoleButtons();
+
+
+                Log.d("MainActivity", "Fragment container ID: " + R.id.fragment_container);
+                // Fragment transaction when the timer is finished
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, scoreboardFragment).commit();
+                Log.d("MainActivity", "Fragment transaction committed");
             }
         };
     }
@@ -118,8 +131,4 @@ public class MainActivity extends AppCompatActivity {
             moleHoleButton.setEnabled(true);
         }
     }
-
-
-
-
 }
