@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.List;
 
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private final long timerLength = 30000;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,21 +29,36 @@ public class MainActivity extends AppCompatActivity {
         timerTextView = findViewById(R.id.timerTextView);
         game = new WhackAMoleGame(scoreTextView);
 
-        disableMoleButtons();
+        // Set up the timer
+        countDownTimer = new CountDownTimer(timerLength, 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long timeLeft = millisUntilFinished / 1000;
+                timerTextView.setText("Time Left: " + timeLeft + " seconds");
+            }
 
-        // Allows user to tap all buttons on the grid
-        for (int i=1; i<=9; i++){
+            @Override
+            public void onFinish() {
+                // Finish the game when the timer ends
+                endGame();
+            }
+        };
+
+        // Set up the onClickListener for all mole buttons
+        for (int i = 1; i <= 9; i++) {
             int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonId);
             moleHoleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // Increase the score by 10 and shuffle buttons
                     game.whackingTheMole();
+                    shuffleButtons();
                 }
             });
-
         }
 
+        // Start the game when the start button is clicked
         Button startButton = findViewById(R.id.start_game_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,33 +66,39 @@ public class MainActivity extends AppCompatActivity {
                 startGame();
             }
         });
-
-        countDownTimer = new CountDownTimer(timerLength, 1000){
-            @Override
-            public void onTick(long millisUntilFinished) {
-                long timeLeft = millisUntilFinished / 1000;
-                timerTextView.setText("Time Left: " + timeLeft + " seconds");
-            }
-            @Override
-            public void onFinish(){
-
-            }
-        };
     }
 
     private void startGame() {
-        startButtons();
+        // Start the game by enabling buttons and starting the timer
+        shuffleButtons();
         countDownTimer.start();
     }
 
+    private void endGame() {
+        // Disable buttons and stop the timer when the game ends
+        countDownTimer.cancel();
+        disableMoleButtons();
 
-    // Help Button Functionality
-    public void onHelpClick(View view){
-        Intent intent = new Intent(this, HelpInstructionsActivity.class);
-        startActivity(intent);
+        showEndGameDialog(game.getPlayerScore());
+    }
+
+    private void showEndGameDialog(int score) {
+        // Create the dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.total_score, null);
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+
+        // Set the score value
+        TextView textViewScoreValue = dialogView.findViewById(R.id.textViewScoreValue);
+        textViewScoreValue.setText(String.valueOf(score));
+
+        // Show the dialog
+        dialog.show();
     }
 
     private void disableMoleButtons() {
+        // Disable all mole buttons
         for (int i = 1; i <= 9; i++) {
             int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonId);
@@ -85,26 +106,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-        private void enableMoleButtons() {
-        for (int i = 1; i <= 9; i++) {
-            int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
-            Button moleHoleButton = findViewById(buttonId);
-            moleHoleButton.setEnabled(true);
-        }
-    }
-    */
-
-    private void startButtons() {
-        // Randomize the buttons
+    private void shuffleButtons() {
+        // Randomize and enable buttons
         ButtonRandomizer buttonRandomizer = new ButtonRandomizer();
         List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(3);
-
-        // Enable only the selected buttons
         enableSelectedButtons(enabledButtonIds);
-
-        // Start the timer
-        countDownTimer.start();
     }
 
     private void enableSelectedButtons(List<Integer> enabledButtonIds) {
@@ -118,8 +124,4 @@ public class MainActivity extends AppCompatActivity {
             moleHoleButton.setEnabled(true);
         }
     }
-
-
-
-
 }
