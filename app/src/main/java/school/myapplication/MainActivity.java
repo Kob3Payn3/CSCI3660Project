@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreTextView = findViewById(R.id.scoreTextView);
         timerTextView = findViewById(R.id.timerTextView);
         game = new WhackAMoleGame(scoreTextView);
+        disableMoleButtons();
 
         // Set up the timer
         countDownTimer = new CountDownTimer(timerLength, 1000){
