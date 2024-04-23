@@ -29,9 +29,11 @@
         <Button
             android:id="@+id/moleHole3"
             style="@style/WhackAMoleHole"/>
+
         <Button
             android:id="@+id/moleHole4"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole"
+            app:cornerRadius="8dp" />
         <Button
             android:id="@+id/moleHole5"
             style="@style/WhackAMoleHole"/>

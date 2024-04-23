@@ -10,7 +10,9 @@
     <style name="WhackAMoleHole">
         <item name="android:layout_height">90dp</item>
         <item name="android:layout_width">90dp</item>
-        <item name="android:background">#FF000000</item>
+        <item name="android:background">@drawable/roundedbutton</item>
+        <!--pulls the background of the grid buttons from roundedbutton.xml, which
+        defines them as rounded-->
     </style>
 
     <style name="OtherGameButtons">
