@@ -74,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Settings button functionality
     public void onTimerOptions(View view){
         showTimerOptionsDialog();
     }
 
+    //The dialog popup that gives timer duration options
     private void showTimerOptionsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Timer Duration");
@@ -97,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                         timerLength = 10000;
                         break;
                 }
+
+                // New timer is created if any options are selected
                 countDownTimer = new CountDownTimer(timerLength, 1000){
                     @Override
                     public void onTick(long millisUntilFinished) {
