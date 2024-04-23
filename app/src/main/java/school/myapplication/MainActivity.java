@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Help Button Functionality
+    public void onHelpClick(View view){
+        Intent intent = new Intent(this, HelpInstructionsActivity.class);
+        startActivity(intent);
+    }
+
     private void startGame() {
         // Start the game by enabling buttons and starting the timer
         shuffleButtons();
@@ -109,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     private void shuffleButtons() {
         // Randomize and enable buttons
         ButtonRandomizer buttonRandomizer = new ButtonRandomizer();
-        List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(3);
+        List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(1);
         enableSelectedButtons(enabledButtonIds);
     }
 
