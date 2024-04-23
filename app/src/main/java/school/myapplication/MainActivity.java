@@ -1,5 +1,6 @@
 package school.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         timerTextView = findViewById(R.id.timerTextView);
         game = new WhackAMoleGame(scoreTextView);
         disableMoleButtons();
-
         // Set up the timer
         countDownTimer = new CountDownTimer(timerLength, 1000){
             @Override
@@ -74,19 +74,68 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onTimerOptions(View view){
+        showTimerOptionsDialog();
+    }
+
+    private void showTimerOptionsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Timer Duration");
+
+        final CharSequence[] timerOptions = {"20 Seconds", "15 Seconds", "10 Seconds"};
+        builder.setItems(timerOptions, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        timerLength = 20000;
+                        break;
+                    case 1:
+                        timerLength = 15000;
+                        break;
+                    case 2:
+                        timerLength = 10000;
+                        break;
+                }
+                countDownTimer = new CountDownTimer(timerLength, 1000){
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        long timeLeft = millisUntilFinished / 1000;
+                        timerTextView.setText("Time Left: " + timeLeft + " seconds");
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        // Finish the game when the timer ends
+                        endGame();
+                    }
+                };
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
     private void startGame() {
         // Start the game by enabling buttons and starting the timer
         shuffleButtons();
         countDownTimer.start();
+
+        // Disable settings button on game start
+        Button settingsButton = findViewById(R.id.timer_options_button);
+        settingsButton.setEnabled(false);
     }
 
     private void endGame() {
         // Disable buttons and stop the timer when the game ends
         countDownTimer.cancel();
         disableMoleButtons();
-
         showEndGameDialog(game.getPlayerScore());
         game.resetPlayerScore();
+
+        // Enable settings button after game end
+        Button settingsButton = findViewById(R.id.timer_options_button);
+        settingsButton.setEnabled(true);
     }
 
     private void showEndGameDialog(int score) {

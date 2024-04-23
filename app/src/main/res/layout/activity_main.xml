@@ -109,7 +109,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/start_game_button"/>
 
-
+    <Button
+        android:id="@+id/timer_options_button"
+        style="@style/OtherGameButtons"
+        android:text="@string/timer_options_button"
+        android:onClick="onTimerOptions"
+        android:layout_margin="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/helpButton"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
