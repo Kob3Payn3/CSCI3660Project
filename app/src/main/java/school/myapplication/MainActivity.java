@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private final long timerLength = 10000;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Calling Scoreboard Fragment
         ScoreboardFragment scoreboardFragment = new ScoreboardFragment();
-
 
         disableMoleButtons();
 
