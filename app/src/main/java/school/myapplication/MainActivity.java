@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // Set up the onClickListener for all mole buttons
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 25; i++) {
             int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonId);
             moleHoleButton.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void disableMoleButtons() {
         // Disable all mole buttons
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 25; i++) {
             int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonId);
             moleHoleButton.setEnabled(false);
