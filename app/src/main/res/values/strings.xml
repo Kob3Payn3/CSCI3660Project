@@ -3,7 +3,7 @@
     <string name="start_button">Start</string>
     <string name="help_button">Help</string>
     <string name="instructions_header">Instructions</string>
-    <string name="timer_options_button">Settings</string>
+    <string name="timer_options_button">Timer</string>
     <string name="instructions_text">
         1: Hit the buttons when they light up
         \n2: Hit them all before the timer runs out

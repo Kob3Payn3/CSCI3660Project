@@ -22,8 +22,7 @@
 
         <Button
             android:id="@+id/moleHole1"
-            style="@style/WhackAMoleHole"
-            />
+            style="@style/WhackAMoleHole" />
         <Button
             android:id="@+id/moleHole2"
             style="@style/WhackAMoleHole"/>
@@ -48,7 +47,6 @@
         <Button
             android:id="@+id/moleHole9"
             style="@style/WhackAMoleHole"/>
-
         <Button
             android:id="@+id/moleHole10"
             style="@style/WhackAMoleHole"/>
@@ -172,6 +170,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/helpButton"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
