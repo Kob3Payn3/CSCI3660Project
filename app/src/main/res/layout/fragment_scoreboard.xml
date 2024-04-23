@@ -12,18 +12,21 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"/>
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="player_scores"/>
 
     <TextView
         android:id="@+id/player_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text=""/>
+        style='@style/scoreboard'
+        tools:text="player_names"/>
 
     <TextView
         android:id="@+id/player_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="score_list" />
+        style="@style/scoreboard"
+            tools:text="player_scores" />
 
 </FrameLayout>
