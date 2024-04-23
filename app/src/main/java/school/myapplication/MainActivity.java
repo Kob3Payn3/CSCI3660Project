@@ -1,7 +1,5 @@
 package school.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private WhackAMoleGame game;
     private TextView timerTextView;
     private CountDownTimer countDownTimer;
-    private final long timerLength = 30000;
+    long timerLength = 20000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         disableMoleButtons();
 
         showEndGameDialog(game.getPlayerScore());
+        game.resetPlayerScore();
     }
 
     private void showEndGameDialog(int score) {
