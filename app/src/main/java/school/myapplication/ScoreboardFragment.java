@@ -22,9 +22,12 @@ public class ScoreboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scoreboard, container, false);
 
+        // TODO: Click listener to exit ScoreboardFragment
+
         // Send bands to RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.score_list);
+        RecyclerView recyclerView = view.findViewById(R.id.score_recycler_view);
         List<Score> scoreBoard = Scoreboard.getInstance(requireContext()).getScores();
+        recyclerView.setAdapter(new ScoreAdapter(scoreBoard));
 
         return view;
     }
@@ -47,7 +50,7 @@ public class ScoreboardFragment extends Fragment {
         @Override
         public ScoreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new ScoreHolder(parent);
+            return new ScoreHolder(layoutInflater, parent);
         }
 
         // Replace the contents of a view
@@ -55,6 +58,8 @@ public class ScoreboardFragment extends Fragment {
         public void onBindViewHolder(@NonNull ScoreHolder holder, int position) {
             Score score = scoreList.get(position);
             holder.bind(score);
+            holder.itemView.setTag(score.getId());
+            //holder.itemView.setOnClickListener(onClickListener);
         }
 
         // Return the size of the dataset
@@ -70,9 +75,9 @@ public class ScoreboardFragment extends Fragment {
     private static class ScoreHolder extends RecyclerView.ViewHolder {
         private final TextView scoreTextView;
 
-        public ScoreHolder(View view) {
-            super(view);
-            scoreTextView = (TextView) view.findViewById(R.id.score_list);
+        public ScoreHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.fragment_scoreboard, parent, false));
+            scoreTextView = itemView.findViewById(R.id.player_name);
         }
 
         public void bind(Score score) {
