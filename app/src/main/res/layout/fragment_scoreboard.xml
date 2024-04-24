@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    style="@style/scoreboard"
     tools:context=".ScoreboardFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -24,9 +25,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/player_score"
+        android:gravity="start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style='@style/scoreboard'
+        style='@style/scoreboard_text'
         tools:text="player_names"/>
 
     <TextView
@@ -37,7 +39,7 @@
         android:gravity="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/scoreboard"
+        style="@style/scoreboard_text"
         tools:text="player_scores" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

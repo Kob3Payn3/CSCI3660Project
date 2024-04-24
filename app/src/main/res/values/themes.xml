@@ -20,6 +20,10 @@
     </style>
 
     <style name="scoreboard">
+        <item name="android:background">@color/transparent_white</item>
+    </style>
+
+    <style name="scoreboard_text">
         <item name="android:textSize">50sp</item>
         <item name="android:padding">50sp</item>
     </style>

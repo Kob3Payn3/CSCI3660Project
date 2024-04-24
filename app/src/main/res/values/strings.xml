@@ -11,6 +11,9 @@
         \n2: Hit them all before the timer runs out
         \n3: Try to get the highest score!\n</string>
 
+    <!-- Scoreboard Headers -->
+    <string name="scoreboard_header">Scoreboard</string>
+
     <!-- Scoreboard Arrays -->
     <string-array name="player_names">
         <item>---</item>
@@ -37,6 +40,5 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
