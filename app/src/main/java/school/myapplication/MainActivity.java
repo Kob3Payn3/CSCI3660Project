@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private WhackAMoleGame game;
     private TextView timerTextView;
     private CountDownTimer countDownTimer;
+    private ScoreboardFragment scoreboardFragment;
     long timerLength = 20000;
 
     @Override
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         timerTextView = findViewById(R.id.timerTextView);
         game = new WhackAMoleGame(scoreTextView);
 
-        // Calling Scoreboard Fragment
-        ScoreboardFragment scoreboardFragment = new ScoreboardFragment();
+        // Create a new scoreboardFragment to show scores at end of game.
+        scoreboardFragment = new ScoreboardFragment();
 
         disableMoleButtons();
 
@@ -120,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         // Finish the game when the timer ends
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, scoreboardFragment).commit();
                         endGame();
                     }
                 };
@@ -144,8 +144,10 @@ public class MainActivity extends AppCompatActivity {
         // Disable buttons and stop the timer when the game ends
         countDownTimer.cancel();
         disableMoleButtons();
-        showEndGameDialog(game.getPlayerScore());
+        //showEndGameDialog(game.getPlayerScore());
         game.resetPlayerScore();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, scoreboardFragment).commit();
 
         // Enable settings button after game end
         Button settingsButton = findViewById(R.id.timer_options_button);
