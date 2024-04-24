@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+// TODO: https://stackoverflow.com/a/34519967 IMPLEMENTATION
 
 public class ScoreboardFragment extends Fragment {
     @Override
