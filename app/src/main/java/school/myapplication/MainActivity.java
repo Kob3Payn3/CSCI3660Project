@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startGame() {
         // Start the game by enabling buttons and starting the timer
+        shuffleEnabled = true;
         shuffleButtons();
         countDownTimer.start();
 
