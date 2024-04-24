@@ -73,15 +73,18 @@ public class ScoreboardFragment extends Fragment {
      * Provides a reference to the type of views the ScoreAdapter manages.
      */
     private static class ScoreHolder extends RecyclerView.ViewHolder {
+        private final TextView playerTextView;
         private final TextView scoreTextView;
 
         public ScoreHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.fragment_scoreboard, parent, false));
-            scoreTextView = itemView.findViewById(R.id.player_name);
+            playerTextView = itemView.findViewById(R.id.player_name);
+            scoreTextView = itemView.findViewById(R.id.player_score);
         }
 
         public void bind(Score score) {
-            scoreTextView.setText(score.getName());
+            playerTextView.setText(score.getName());
+            scoreTextView.setText(Integer.toString(score.getScore()));
         }
     }
 }
