@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView timerTextView;
     private CountDownTimer countDownTimer;
     long timerLength = 20000;
-    private boolean shuffleEnabled = true;
+    private boolean gameEnded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0:
-                        timerLength = 20000;
+                        timerLength = 21000;
                         break;
                     case 1:
-                        timerLength = 15000;
+                        timerLength = 16000;
                         break;
                     case 2:
-                        timerLength = 10000;
+                        timerLength = 11000;
                         break;
                 }
 
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startGame() {
         // Start the game by enabling buttons and starting the timer
-        shuffleEnabled = true;
+        gameEnded = false;
         shuffleButtons();
         countDownTimer.start();
 
@@ -138,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void endGame() {
         // Disable buttons and stop the timer when the game ends
+        gameEnded = true;
         countDownTimer.cancel();
         disableMoleButtons();
         showEndGameDialog(game.getPlayerScore());
         game.resetPlayerScore();
-        shuffleEnabled = false;
         // Enable settings button after game end
         Button settingsButton = findViewById(R.id.timer_options_button);
         settingsButton.setEnabled(true);
@@ -173,10 +173,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void shuffleButtons() {
-        // Checks to see if shuffling is allowed
-        if (!shuffleEnabled) {
-            return;
-        }
 
         Random random = new Random();
         // Button enabled at random time intervals in this range
@@ -187,7 +183,9 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 ButtonRandomizer buttonRandomizer = new ButtonRandomizer();
                 List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(1);
-                enableSelectedButtons(enabledButtonIds);
+                if (!gameEnded){
+                    enableSelectedButtons(enabledButtonIds);
+                }
             }
         }, delay);
     }
