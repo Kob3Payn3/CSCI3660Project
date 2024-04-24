@@ -2,6 +2,7 @@
     <string name="app_name">WhackAMole</string>
     <string name="start_button">Start</string>
     <string name="help_button">Help</string>
+    <string name="play_button">Play</string>
     <string name="instructions_header">Instructions</string>
     <string name="timer_options_button">Timer</string>
     <string name="instructions_text">
