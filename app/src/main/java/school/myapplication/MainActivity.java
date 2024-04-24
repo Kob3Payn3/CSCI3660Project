@@ -72,14 +72,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     // Help Button Functionality
     public void onHelpClick(View view){
         Intent intent = new Intent(this, HelpInstructionsActivity.class);
         startActivity(intent);
     }
 
-    // Settings button functionality
+    // Timer settings button functionality
     public void onTimerOptions(View view){
         showTimerOptionsDialog();
     }
@@ -176,13 +175,14 @@ public class MainActivity extends AppCompatActivity {
 
         Random random = new Random();
         // Button enabled at random time intervals in this range
-        int delay = random.nextInt(500) + 500;
+        int delay = random.nextInt(750);
         // Randomize and enable buttons, the shuffling and enabling of buttons occurs at random intervals set by the delay
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 ButtonRandomizer buttonRandomizer = new ButtonRandomizer();
                 List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(1);
+                // Only enables buttons after game state is checked
                 if (!gameEnded){
                     enableSelectedButtons(enabledButtonIds);
                 }
