@@ -2,9 +2,9 @@
 
 <!-- Makes the color of the disabled and enabled grid buttons different-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Enabled state -->
+    <!-- when the button is in an enabled state it sets the image to the mole to it appears  to pop up -->
     <item android:drawable="@drawable/mole2" android:state_enabled="true"/>
-    <!-- Disabled state -->
+    <!-- Disabled state that uses the hole image in drawable folder as a base on top of the grid -->
     <item android:drawable="@drawable/hole" android:state_enabled="false"/>
 
 </selector>
