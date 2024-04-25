@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pixelsprite"
     tools:context=".MainActivity">
 
 
@@ -12,9 +13,9 @@
         android:id="@+id/whack_a_mole_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="80dp"
         android:columnCount="5"
         android:rowCount="5"
-        android:layout_margin="80dp"
         android:useDefaultMargins="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -24,80 +25,103 @@
         <Button
             android:id="@+id/moleHole1"
             style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole2"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole3"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole4"
             style="@style/WhackAMoleHole"
             app:cornerRadius="8dp" />
+
         <Button
             android:id="@+id/moleHole5"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole6"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole7"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole8"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole9"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole10"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole11"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole12"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole13"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole14"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole15"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole16"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole17"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole18"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole19"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole20"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole21"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole22"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole23"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole24"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole" />
+
         <Button
             android:id="@+id/moleHole25"
-            style="@style/WhackAMoleHole"/>
-
+            style="@style/WhackAMoleHole" />
 
 
     </GridLayout>
@@ -109,35 +133,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Score TextView -->
         <TextView
             android:id="@+id/scoreTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Score: 0"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:text="Score: 0"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
         <!-- Timer TextView -->
         <TextView
             android:id="@+id/timerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time left: 0 sec"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"/>
+            android:text="Time left: 0 sec"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
@@ -146,6 +170,7 @@
         android:id="@+id/start_game_button"
         style="@style/OtherGameButtons"
         android:layout_marginTop="35dp"
+        android:backgroundTint="#407009"
         android:text="@string/start_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -155,22 +180,24 @@
     <Button
         android:id="@+id/helpButton"
         style="@style/OtherGameButtons"
-        android:text="@string/help_button"
-        android:onClick="onHelpClick"
         android:layout_margin="10dp"
+        android:backgroundTint="#59A104"
+        android:onClick="onHelpClick"
+        android:text="@string/help_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_game_button"/>
+        app:layout_constraintTop_toBottomOf="@id/start_game_button" />
 
     <!-- Game options button -->
     <Button
         android:id="@+id/timer_options_button"
         style="@style/OtherGameButtons"
-        android:text="@string/timer_options_button"
-        android:onClick="onTimerOptions"
         android:layout_margin="10dp"
+        android:backgroundTint="#6BBC0E"
+        android:onClick="onTimerOptions"
+        android:text="@string/timer_options_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/helpButton"/>
+        app:layout_constraintTop_toBottomOf="@id/helpButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

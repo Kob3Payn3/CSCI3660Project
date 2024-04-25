@@ -10,30 +10,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/pixelsprite">
 
         <!-- Game Title in title screen view -->
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/font"
             android:text="@string/app_name"
-            android:textSize="36sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"/>
+            android:textSize="48sp" />
 
         <!-- The button that takes player to MainActivity -->
         <Button
             android:id="@+id/enterGameButton"
             style="@style/OtherGameButtons"
-            android:onClick="onEnterGameClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/play_button"
             android:layout_below="@id/titleTextView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#3C6C04"
+            android:onClick="onEnterGameClick"
+            android:text="@string/play_button" />
 
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
