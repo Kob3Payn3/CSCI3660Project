@@ -1,21 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.WhackAMole" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.WhackAMole" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.WhackAMole" parent="Base.Theme.WhackAMole" />
 
+    <!-- Style for grid buttons -->
     <style name="WhackAMoleHole">
-        <item name="android:layout_height">45dp</item>
-        <item name="android:layout_width">45dp</item>
-        <item name="android:background">#FF000000</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="color">@color/black</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <!--pulls the background of the grid buttons from button_selector.xml, which
+        defines them as rounded and allows for color change *see button_selector.xml*-->
     </style>
 
+    <!-- Style for other buttons that are not in the grid -->
     <style name="OtherGameButtons">
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">120dp</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button_background</item>
     </style>
 </resources>

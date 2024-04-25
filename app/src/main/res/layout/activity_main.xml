@@ -20,6 +20,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- All grid buttons -->
         <Button
             android:id="@+id/moleHole1"
             style="@style/WhackAMoleHole" />
@@ -31,7 +32,8 @@
             style="@style/WhackAMoleHole"/>
         <Button
             android:id="@+id/moleHole4"
-            style="@style/WhackAMoleHole"/>
+            style="@style/WhackAMoleHole"
+            app:cornerRadius="8dp" />
         <Button
             android:id="@+id/moleHole5"
             style="@style/WhackAMoleHole"/>
@@ -101,7 +103,7 @@
     </GridLayout>
 
 
-    <!--This displays other info outside of the grid like the score and the timer-->
+    <!--This layout displays other info outside of the grid like the score and the timer etc -->
     <RelativeLayout
         android:id="@+id/infoLayout"
         android:layout_width="match_parent"
