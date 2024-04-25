@@ -6,7 +6,7 @@
     <string name="instructions_header">Instructions</string>
     <string name="timer_options_button">Timer</string>
     <string name="instructions_text">
-        1: Hit the buttons when they light up
+        1: Hit the moles when they pop out of their holes
         \n2: Hit them all before the timer runs out
         \n3: Try to get the highest score!\n</string>
 </resources>
