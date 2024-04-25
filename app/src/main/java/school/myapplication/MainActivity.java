@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
         final CharSequence[] timerOptions = {"20 Seconds", "15 Seconds", "10 Seconds"};
         builder.setItems(timerOptions, new DialogInterface.OnClickListener() {
+
+            // Sometimes the timer in game will give a second more or less so I added one second to the options
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 countDownTimer = new CountDownTimer(timerLength, 1000){
                     @Override
                     public void onTick(long millisUntilFinished) {
+                        // changes the timer length if an option was selected
                         long timeLeft = millisUntilFinished / 1000;
                         timerTextView.setText("Time Left: " + timeLeft + " seconds");
                     }
@@ -182,7 +185,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 ButtonRandomizer buttonRandomizer = new ButtonRandomizer();
                 List<Integer> enabledButtonIds = buttonRandomizer.getRandomButtonIds(1);
-                // Only enables buttons after game state is checked
+                /* Only enables buttons after game state is checked, this is to fix a bug
+                that would break the game if the player started a new game after the first game */
                 if (!gameEnded){
                     enableSelectedButtons(enabledButtonIds);
                 }

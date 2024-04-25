@@ -7,6 +7,7 @@
 
     <style name="Theme.WhackAMole" parent="Base.Theme.WhackAMole" />
 
+    <!-- Style for grid buttons -->
     <style name="WhackAMoleHole">
         <item name="android:layout_height">55dp</item>
         <item name="android:layout_width">55dp</item>
@@ -15,6 +16,7 @@
         defines them as rounded-->
     </style>
 
+    <!-- Style for other buttons that are not in the grid -->
     <style name="OtherGameButtons">
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">120dp</item>

@@ -18,12 +18,14 @@ public class TitleScreenActivity extends AppCompatActivity {
 
         ConstraintLayout constraintLayout = findViewById(R.id.mainLayout);
 
+        // Title screen animation code
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
     }
 
+    // Provides onClick function to enter Main Activity
     public void onEnterGameClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
