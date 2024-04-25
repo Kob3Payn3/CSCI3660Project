@@ -13,8 +13,8 @@
         <item name="android:layout_width">55dp</item>
         <item name="color">@color/black</item>
         <item name="android:background">@drawable/button_selector</item>
-        <!--pulls the background of the grid buttons from roundedbutton.xml, which
-        defines them as rounded-->
+        <!--pulls the background of the grid buttons from button_selector.xml, which
+        defines them as rounded and allows for color change *see button_selector.xml*-->
     </style>
 
     <!-- Style for other buttons that are not in the grid -->

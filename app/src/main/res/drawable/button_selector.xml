@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Makes the color of the disabled and enabled grid buttons different-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/roundedbutton" android:state_enabled="true"/>
     <item android:drawable="@drawable/roundedbutton_disabled" android:state_enabled="false"/>
