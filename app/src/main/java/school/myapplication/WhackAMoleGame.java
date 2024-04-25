@@ -30,5 +30,10 @@ public class WhackAMoleGame {
         return playerScore;
     }
 
+    public void resetPlayerScore(){
+        playerScore = 0;
+        scoreTextView.setText("Score: " + playerScore);
+    }
+
 }
 

@@ -18,7 +18,7 @@ public class ButtonRandomizer {
     public ButtonRandomizer() {
         // Initialize the list with button ids
         buttonIds = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 25; i++) {
             buttonIds.add(i);
         }
     }
