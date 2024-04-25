@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView timerTextView;
     private CountDownTimer countDownTimer;
     private ScoreboardFragment scoreboardFragment;
+    private SQLiteDatabase scoreDB = null;
     long timerLength = 20000;
 
     @Override
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create a new scoreboardFragment to show scores at end of game.
         scoreboardFragment = new ScoreboardFragment();
+
 
         disableMoleButtons();
 
@@ -197,7 +201,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initScoreDB() {
+        try {
+            // Create the scoreboard database
+            scoreDB = this.openOrCreateDatabase("scoreboard", MODE_PRIVATE, null);
+            scoreDB.execSQL("CREATE TABLE IF NOT EXISTS scores (name TEXT, score INTEGER)");
 
+            Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
+
+        } catch (Exception e) {} finally {
+
+        }
+    }
 
 
 }
