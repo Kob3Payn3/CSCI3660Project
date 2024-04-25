@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WhackAndroid</string>
+    <string name="app_name">Android Whack</string>
     <string name="start_button">Start</string>
     <string name="help_button">Help</string>
     <string name="play_button">Play</string>

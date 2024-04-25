@@ -138,11 +138,15 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setEnabled(false);
     }
 
+
+
     private void endGame() {
         // Disable buttons and stop the timer when the game ends
         gameEnded = true;
         countDownTimer.cancel();
         disableMoleButtons();
+        /*displays the players total score once gameEnded = true
+        and then resets player score*/
         showEndGameDialog(game.getPlayerScore());
         game.resetPlayerScore();
         // Enable settings button after game end
@@ -151,17 +155,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showEndGameDialog(int score) {
-        // Create the dialog
+
+        /*Uses an alert to display the players total ending score
+        by inflating the layout xml from total_score*/
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View dialogView = getLayoutInflater().inflate(R.layout.total_score, null);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
 
-        // Set the score value
+        /* gets the players current score by using the two textviews
+        in total score, the first one setting the text Your score: and the next view
+        sets the string value to the value of score pulled using getPlayerScore() */
+
+
         TextView textViewScoreValue = dialogView.findViewById(R.id.textViewScoreValue);
         textViewScoreValue.setText(String.valueOf(score));
 
-        // Show the dialog
+        // displays the alert dialog
         dialog.show();
     }
 
