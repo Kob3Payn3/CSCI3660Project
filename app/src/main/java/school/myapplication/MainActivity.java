@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         // Create a new scoreboardFragment to show scores at end of game.
         scoreboardFragment = new ScoreboardFragment();
 
-
         disableMoleButtons();
 
         // Set up the timer

@@ -1,6 +1,9 @@
 package school.myapplication;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -15,24 +18,79 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // TODO: https://stackoverflow.com/a/34519967 IMPLEMENTATION
 
 public class ScoreboardFragment extends Fragment {
+    private List<Score> scoreBoard;
+    private SQLiteDatabase scoreDB;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scoreboard, container, false);
 
-        // TODO: Click listener to exit ScoreboardFragment
+        scoreDB = null;
+        try {
+            initScoreDB();
+        } catch (Exception e) {
 
-        // Send bands to RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.score_recycler_view);
-        List<Score> scoreBoard = Scoreboard.getInstance(requireContext()).getScores();
-        recyclerView.setAdapter(new ScoreAdapter(scoreBoard));
+        } finally {
+            // Create and initialize the RecyclerView
+            RecyclerView recyclerView = view.findViewById(R.id.score_recycler_view);
+            scoreBoard = new ArrayList<Score>();
+            recyclerView.setAdapter(new ScoreAdapter(scoreBoard));
+
+            toListFromDB();
+        }
 
         return view;
     }
+
+    // Opens a DB or creates a new one if one does not exist.
+    private void initScoreDB() {
+        try {
+            scoreDB = SQLiteDatabase.openOrCreateDatabase("./scoreboard.sql", null, null);
+            scoreDB.execSQL("CREATE TABLE IF NOT EXISTS scores (name TEXT, score TEXT);");
+
+            Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
+
+            // TEST
+            if (cursor != null) {
+                if (cursor.getCount() == 0) {
+                    scoreDB.execSQL("INSERT INTO scores (name, score) VALUES ('test', '100')");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    // Creates a list from the DB to work with in AndroidStudio
+    private void toListFromDB() {
+        try {
+            Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
+
+            if (cursor.moveToFirst()) {
+                while (!cursor.isAfterLast()) {
+
+                    Score score = new Score();
+                    score.setName(cursor.getString(0));
+                    score.setScore(Integer.parseInt(cursor.getString(1)));
+
+                    scoreBoard.add(score);
+                    cursor.moveToNext();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+
+
 
     /**
      * Creates an adapter to manage the ViewHolders
@@ -70,6 +128,11 @@ public class ScoreboardFragment extends Fragment {
             return scoreList.size();
         }
     }
+
+
+
+
+
 
     /**
      * Provides a reference to the type of views the ScoreAdapter manages.

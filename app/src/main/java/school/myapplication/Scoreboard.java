@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import java.util.ArrayList;
 import java.util.List;
 
+// DEPRECATED
+
 public class Scoreboard {
     private static Scoreboard instance;
     private List<Score> scoreBoard;
@@ -20,11 +22,15 @@ public class Scoreboard {
     private Scoreboard(Context context) {
         scoreBoard = new ArrayList<>();
         Resources res = context.getResources();
-        String[] playerNames = res.getStringArray(R.array.player_names);
-        int[] playerScores = res.getIntArray(R.array.player_scores);
-        for (int i = 0; i < playerScores.length; i++) {
-            scoreBoard.add(new Score(i + 1, playerNames[i], playerScores[i]));
-        }
+
+
+
+        //String[] playerNames = res.getStringArray(R.array.player_names);
+        //int[] playerScores = res.getIntArray(R.array.player_scores);
+
+        //for (int i = 0; i < playerScores.length; i++) {
+        //    scoreBoard.add(new Score(i + 1, playerNames[i], playerScores[i]));
+        //}
     }
 
     public List<Score> getScores() { return scoreBoard; }
@@ -36,6 +42,10 @@ public class Scoreboard {
             }
         }
         return null;
+    }
+
+    public void addScore(Score score) {
+        scoreBoard.add(score);
     }
 
 }
