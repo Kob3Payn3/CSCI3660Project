@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
-        // Release MediaPlayer when activity is destroyed
+        // MediaPlayer process stopped when activity is destroyed
         if (mediaPlayer != null) {
             mediaPlayer.release();
             mediaPlayer = null;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        // Stop MediaPlayer when activity is stopped
+        // Stops MediaPlayer when click is finished
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
         }
