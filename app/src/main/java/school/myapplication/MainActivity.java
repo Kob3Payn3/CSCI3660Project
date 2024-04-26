@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
+
 import java.util.List;
 import java.util.Random;
 
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     long timerLength = 20000;
     private boolean gameEnded = false;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         game = new WhackAMoleGame(scoreTextView);
         disableMoleButtons();
         // Set up the timer
+
+        // Initializes MediaPlayer with the sound effect for whack
+        mediaPlayer = MediaPlayer.create(this, R.raw.pop);
+
         countDownTimer = new CountDownTimer(timerLength, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             moleHoleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    playSound(); // plays the sound from the raw file
                     v.setEnabled(false);
                     // Increase the score by 10 and shuffle buttons
                     game.whackingTheMole();
@@ -71,6 +78,24 @@ public class MainActivity extends AppCompatActivity {
                 startGame();
             }
         });
+    }
+    @Override
+    protected void onDestroy() {
+        // Release MediaPlayer when activity is destroyed
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        // Stop MediaPlayer when activity is stopped
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+        }
+        super.onStop();
     }
     // Help Button Functionality
     public void onHelpClick(View view){
@@ -165,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+
+
     private void disableMoleButtons() {
         // Disable all mole buttons
         for (int i = 1; i <= 25; i++) {
@@ -203,6 +230,16 @@ public class MainActivity extends AppCompatActivity {
             int buttonResourceId = getResources().getIdentifier("moleHole" + buttonId, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonResourceId);
             moleHoleButton.setEnabled(true);
+        }
+    }
+
+    //method that is used once playSound(); is called
+    private void playSound() {
+        if (mediaPlayer != null) {
+
+            // resets MediaPlayer from the beginning each click
+            mediaPlayer.seekTo(0);
+            mediaPlayer.start();
         }
     }
 }
