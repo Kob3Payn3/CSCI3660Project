@@ -199,19 +199,4 @@ public class MainActivity extends AppCompatActivity {
             moleHoleButton.setEnabled(true);
         }
     }
-
-    private void initScoreDB() {
-        try {
-            // Create the scoreboard database
-            scoreDB = this.openOrCreateDatabase("scoreboard", MODE_PRIVATE, null);
-            scoreDB.execSQL("CREATE TABLE IF NOT EXISTS scores (name TEXT, score INTEGER)");
-
-            Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
-
-        } catch (Exception e) {} finally {
-
-        }
-    }
-
-
 }

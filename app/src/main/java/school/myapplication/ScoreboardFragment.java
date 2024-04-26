@@ -1,8 +1,5 @@
 package school.myapplication;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,12 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-
-// TODO: https://stackoverflow.com/a/34519967 IMPLEMENTATION
 
 public class ScoreboardFragment extends Fragment {
     private List<Score> scoreBoard;
@@ -51,7 +44,7 @@ public class ScoreboardFragment extends Fragment {
     // Opens a DB or creates a new one if one does not exist.
     private void initScoreDB() {
         try {
-            scoreDB = SQLiteDatabase.openOrCreateDatabase("./scoreboard.sql", null, null);
+            scoreDB = SQLiteDatabase.openOrCreateDatabase("/scoreboard", null, null);
             scoreDB.execSQL("CREATE TABLE IF NOT EXISTS scores (name TEXT, score TEXT);");
 
             Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
