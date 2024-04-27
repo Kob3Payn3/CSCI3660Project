@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         // DEPRECATED
         //showEndGameDialog(game.getPlayerScore());
 
+        // Puts the score in scoreDB and resets the game score counter.
         scoreboardFragment.addScore(game.getPlayerScore());
         game.resetPlayerScore();
 

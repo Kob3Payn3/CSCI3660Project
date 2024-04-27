@@ -83,9 +83,15 @@ public class ScoreboardFragment extends Fragment {
 
     // Adds a score to the DB.
     public void addScore(/*String name,*/ int value) {
-        scoreDB.execSQL("INSERT INTO scores (name, score) VALUES ('Default Player', value)");
+        try {
+            Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
+            scoreDB.execSQL("INSERT INTO scores (name, score) VALUES ('Default Player', value)");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         // Update the scoreboard
+        scoreBoard = null;
         scoreBoard = new ArrayList<Score>();
         toListFromDB();
     }
