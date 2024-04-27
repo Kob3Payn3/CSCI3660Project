@@ -44,7 +44,7 @@ public class ScoreboardFragment extends Fragment {
     // Opens a DB or creates a new one if one does not exist.
     private void initScoreDB() {
         try {
-            scoreDB = SQLiteDatabase.openOrCreateDatabase("/scoreboard", null, null);
+            scoreDB = SQLiteDatabase.openOrCreateDatabase("/data/data/school.myapplication/scoreboard/", null, null);
             scoreDB.execSQL("CREATE TABLE IF NOT EXISTS scores (name TEXT, score TEXT);");
 
             Cursor cursor = scoreDB.rawQuery("SELECT * FROM scores", null);
