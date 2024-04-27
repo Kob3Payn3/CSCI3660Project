@@ -81,6 +81,17 @@ public class ScoreboardFragment extends Fragment {
         }
     }
 
+    /**
+     * Adds a score to the scoreDB
+     * @param name
+     * @param value
+     */
+    public void addScore(/*String name,*/ int value) {
+        Score score = new Score();
+        score.setName("Default Player");
+        score.setScore(value);
+    }
+
 
 
 

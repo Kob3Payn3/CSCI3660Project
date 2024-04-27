@@ -147,7 +147,11 @@ public class MainActivity extends AppCompatActivity {
         // Disable buttons and stop the timer when the game ends
         countDownTimer.cancel();
         disableMoleButtons();
+
+        // DEPRECATED
         //showEndGameDialog(game.getPlayerScore());
+
+        scoreboardFragment.addScore(game.getPlayerScore());
         game.resetPlayerScore();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, scoreboardFragment).commit();
@@ -157,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setEnabled(true);
     }
 
+    // DEPRECATED
     private void showEndGameDialog(int score) {
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
