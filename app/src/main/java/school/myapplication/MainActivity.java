@@ -158,6 +158,10 @@ public class MainActivity extends AppCompatActivity {
         shuffleButtons();
         countDownTimer.start();
 
+        // Prevents user from spamming the start button during the game
+        Button startButton = findViewById(R.id.start_game_button);
+        startButton.setEnabled(false);
+
         // Disable settings button on game start
         Button settingsButton = findViewById(R.id.timer_options_button);
         settingsButton.setEnabled(false);
@@ -170,6 +174,10 @@ public class MainActivity extends AppCompatActivity {
         disableMoleButtons();
         showEndGameDialog(game.getPlayerScore());
         game.resetPlayerScore();
+
+        // enables the start game button after the timer ends
+        Button startButton = findViewById(R.id.start_game_button);
+        startButton.setEnabled(true);
         // Enable settings button after game end
         Button settingsButton = findViewById(R.id.timer_options_button);
         settingsButton.setEnabled(true);
