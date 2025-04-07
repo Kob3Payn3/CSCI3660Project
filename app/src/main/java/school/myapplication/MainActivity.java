@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private WhackAMoleGame game;
     private TextView timerTextView;
+    private TextView scoreTextView;
     private CountDownTimer countDownTimer;
     long timerLength = 20000;
     private boolean gameEnded = false;
@@ -31,30 +32,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView scoreTextView = findViewById(R.id.scoreTextView);
-        timerTextView = findViewById(R.id.timerTextView);
-        game = new WhackAMoleGame(scoreTextView);
-        disableMoleButtons();
-        // Set up the timer
+        initializeViews();
+        setupGame();
+        setupMediaPlayer();
+        setupTimer();
+        setupMoleHoleButtons();
+        setupStartButton();
 
-        // Initializes MediaPlayer with the sound effect for whack
-        mediaPlayer = MediaPlayer.create(this, R.raw.pop);
-
-        countDownTimer = new CountDownTimer(timerLength, 1000){
-            @Override
-            public void onTick(long millisUntilFinished) {
-                long timeLeft = millisUntilFinished / 1000;
-                timerTextView.setText("Time Left: " + timeLeft + " seconds");
-            }
-
-            @Override
-            public void onFinish() {
-                // Finish the game when the timer ends
-                endGame();
-            }
-        };
-
-        // Set up the onClickListener for all mole buttons
+    }
+    private void setupMoleHoleButtons() {
         for (int i = 1; i <= 25; i++) {
             int buttonId = getResources().getIdentifier("moleHole" + i, "id", getPackageName());
             Button moleHoleButton = findViewById(buttonId);
@@ -69,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
 
-        // Start the game when the start button is clicked
+    private void setupStartButton() {
         Button startButton = findViewById(R.id.start_game_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +66,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initializeViews() {
+        scoreTextView = findViewById(R.id.scoreTextView);
+        timerTextView = findViewById(R.id.timerTextView);
+    }
+
+    private void setupGame() {
+        game = new WhackAMoleGame(scoreTextView);
+        disableMoleButtons();
+    }
+
+    private void setupTimer() {
+        countDownTimer = new CountDownTimer(timerLength, 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long timeLeft = millisUntilFinished / 1000;
+                timerTextView.setText("Time Left: " + timeLeft + " seconds");
+            }
+
+            @Override
+            public void onFinish() {
+                // Finish the game when the timer ends
+                endGame();
+            }
+        };
+    }
+
+    private void setupMediaPlayer() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.pop);
+    }
+
     @Override
     protected void onDestroy() {
         // MediaPlayer process stopped when activity is destroyed
